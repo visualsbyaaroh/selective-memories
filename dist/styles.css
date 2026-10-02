@@ -142,7 +142,9 @@ img { display: block; max-width: 100%; }
 .gallery-heading h2 { margin: 0; font-size: inherit; font-weight: 400; }
 .gallery-heading span { color: var(--muted); }
 .image-grid { columns: 3 280px; column-gap: 10px; }
-.image-button { display: block; width: 100%; margin: 0 0 10px; padding: 0; border: 0; background: #111; break-inside: avoid; cursor: zoom-in; }
+.image-item { display: inline-block; width: 100%; margin: 0 0 10px; break-inside: avoid; }
+.image-item figcaption { padding: 8px 0 10px; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 11px; line-height: 1.45; }
+.image-button { display: block; width: 100%; margin: 0; padding: 0; border: 0; background: #111; cursor: zoom-in; }
 .image-button img { width: 100%; height: auto; }
 
 .lightbox { width: 100vw; height: 100vh; max-width: none; max-height: none; margin: 0; padding: 22px; border: 0; background: rgba(0,0,0,.98); color: var(--fg); }
@@ -150,7 +152,7 @@ img { display: block; max-width: 100%; }
 .lightbox::backdrop { background: #000; }
 .lightbox figure { max-width: 100%; max-height: calc(100vh - 44px); margin: 0; display: flex; flex-direction: column; align-items: center; gap: 8px; }
 .lightbox img { max-width: 100%; max-height: calc(100vh - 78px); object-fit: contain; }
-.lightbox figcaption { color: var(--muted); font-size: 11px; text-transform: uppercase; }
+.lightbox figcaption { max-width: 900px; color: var(--muted); font-size: 11px; line-height: 1.45; text-align: center; }
 .lightbox-close, .lightbox-control { border: 0; background: none; color: var(--muted); }
 .lightbox-close { position: fixed; top: 15px; right: 20px; z-index: 2; font-size: 24px; }
 .lightbox-control { font-size: 18px; }
@@ -179,7 +181,7 @@ img { display: block; max-width: 100%; }
   .collection-hero { min-height: 250px; }
   .collection-hero h1 { font-size: 36px; }
   .image-grid { columns: 2 140px; column-gap: 7px; }
-  .image-button { margin-bottom: 7px; }
+  .image-item { margin-bottom: 7px; }
   .lightbox[open] { grid-template-columns: 1fr; }
   .lightbox-control { position: fixed; bottom: 18px; z-index: 2; }
   .lightbox-control.previous { left: 18px; }

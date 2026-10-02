@@ -105,7 +105,8 @@
       const heading = item.sections.length > 1 ? `<div class="gallery-heading"><h2>${escapeHtml(section)}</h2><span>${images.length} images</span></div>` : '';
       return `<section class="gallery-section">${heading}<div class="image-grid">${images.map((image, index) => {
         const globalIndex = item.images.indexOf(image);
-        return `<button class="image-button" type="button" data-image-index="${globalIndex}" aria-label="View image ${globalIndex + 1} of ${item.imageCount}"><img src="${image.src}" alt="${escapeHtml(image.alt)}" loading="lazy" decoding="async" /></button>`;
+        const caption = image.description ? `<figcaption>${escapeHtml(image.description)}</figcaption>` : '';
+        return `<figure class="image-item"><button class="image-button" type="button" data-image-index="${globalIndex}" aria-label="View image ${globalIndex + 1} of ${item.imageCount}"><img src="${image.src}" alt="${escapeHtml(image.alt)}" loading="lazy" decoding="async" /></button>${caption}</figure>`;
       }).join('')}</div></section>`;
     }).join('');
     elements.collectionContent.innerHTML = `
@@ -151,7 +152,8 @@
     if (!image) return;
     elements.lightboxImage.src = image.src;
     elements.lightboxImage.alt = image.alt;
-    elements.lightboxCaption.textContent = `${state.currentCollection.title} · ${state.lightboxIndex + 1} / ${state.lightboxImages.length}`;
+    const position = `${state.currentCollection.title} · ${state.lightboxIndex + 1} / ${state.lightboxImages.length}`;
+    elements.lightboxCaption.textContent = image.description ? `${image.description} · ${position}` : position;
   }
 
   function moveLightbox(direction) {

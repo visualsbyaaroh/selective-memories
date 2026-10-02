@@ -9,6 +9,11 @@ const distRoot = path.join(projectRoot, 'dist');
 const mediaRoot = path.join(distRoot, 'media');
 const imageExtensions = new Set(['.jpg', '.jpeg', '.png', '.webp', '.avif']);
 const metadata = JSON.parse(await fs.readFile(path.join(projectRoot, 'data', 'collections.json'), 'utf8'));
+const captionData = JSON.parse(await fs.readFile(path.join(projectRoot, 'data', 'image-captions.json'), 'utf8'));
+
+function toWebPath(value) {
+  return value.split(path.sep).join('/');
+}
 
 function naturalCompare(a, b) {
   return a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' });
@@ -48,10 +53,14 @@ for (let collectionIndex = 0; collectionIndex < metadata.length; collectionIndex
     const outputName = `${String(imageIndex + 1).padStart(4, '0')}${extension}`;
     await fs.copyFile(file.absolute, path.join(outputPath, outputName));
     const parts = file.relative.split(path.sep);
+    const caption = captionData.captions[`${item.sourceFolder}/${toWebPath(file.relative)}`];
+    const source = caption ? captionData.sources[caption.source] : null;
     images.push({
       src: `media/${collectionId}/${outputName}`,
       section: parts.length > 1 ? parts[0] : 'Images',
-      alt: `${item.title}, image ${imageIndex + 1}`
+      alt: caption?.text || `${item.title}, image ${imageIndex + 1}`,
+      description: caption?.text || '',
+      source: source ? { label: source.label, url: source.url } : null
     });
   }
 
