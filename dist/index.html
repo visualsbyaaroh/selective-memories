@@ -12,11 +12,10 @@
   <body>
     <header class="site-header">
       <a class="wordmark" href="#archive" aria-label="Selective Memories home">Selective Memories</a>
-      <p class="archive-total" id="archive-total"></p>
       <nav class="primary-nav" aria-label="Primary navigation">
         <a href="#archive" data-route="archive">Archive</a>
         <a href="#index" data-route="index">Index</a>
-        <a href="#about" data-route="about">About</a>
+        <a href="#about" data-route="about">Info</a>
       </nav>
     </header>
 
@@ -24,12 +23,15 @@
       <section class="view archive-view" id="archive-view" aria-labelledby="archive-heading">
         <h1 class="visually-hidden" id="archive-heading">Archive</h1>
         <div class="archive-tools" aria-label="Archive controls">
-          <label class="search-field">
-            <span class="visually-hidden">Search the archive</span>
-            <svg aria-hidden="true" viewBox="0 0 20 20"><circle cx="8.5" cy="8.5" r="5.5"></circle><path d="m13 13 4 4"></path></svg>
-            <input id="search-input" type="search" placeholder="Search people, titles, publications…" autocomplete="off" />
-          </label>
+          <div class="archive-tools-heading">
+            <span>Archive</span>
+            <span id="result-count"></span>
+          </div>
           <div class="filter-row">
+            <label class="search-field">
+              <span class="visually-hidden">Search the archive</span>
+              <input id="search-input" type="search" placeholder="Search" autocomplete="off" />
+            </label>
             <label class="plain-select">
               <span class="visually-hidden">Filter by type</span>
               <select id="type-filter"></select>
@@ -40,23 +42,21 @@
                 <option value="All">All dates</option>
               </select>
             </label>
-          </div>
-          <div class="result-line">
-            <span id="result-count"></span>
-            <button id="clear-filters" type="button">Clear filters</button>
+            <button id="clear-filters" type="button">Reset</button>
           </div>
         </div>
 
-        <div class="collection-grid" id="collection-grid"></div>
-        <div class="empty-state" id="empty-state" hidden>
-          <p>No collections match this search.</p>
-          <button type="button" data-clear>Show the full archive</button>
+        <div class="archive-layout">
+          <div class="collection-list" id="collection-grid"></div>
+          <aside class="collection-preview" aria-hidden="true">
+            <img id="collection-preview-image" alt="" />
+          </aside>
         </div>
+        <div class="empty-state" id="empty-state" hidden><p>No collections found.</p><button type="button" data-clear>Reset</button></div>
       </section>
 
       <section class="view index-view" id="index-view" aria-labelledby="index-heading" hidden>
         <div class="page-heading">
-          <p class="eyebrow">Cross-reference</p>
           <h1 id="index-heading">Index</h1>
         </div>
         <div class="index-list" id="index-list"></div>
@@ -64,8 +64,7 @@
 
       <section class="view about-view" id="about-view" aria-labelledby="about-heading" hidden>
         <div class="page-heading">
-          <p class="eyebrow">About</p>
-          <h1 id="about-heading">Selective Memories</h1>
+          <h1 id="about-heading">Info</h1>
         </div>
         <div class="about-copy">
           <p>This is a personal working archive: film stills, campaigns, editorials, portraits, events, posters and historical photographs gathered for visual research.</p>

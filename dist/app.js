@@ -14,6 +14,7 @@
     clearFilters: document.querySelector('#clear-filters'),
     emptyState: document.querySelector('#empty-state'),
     indexList: document.querySelector('#index-list'),
+    previewImage: document.querySelector('#collection-preview-image'),
     collectionView: document.querySelector('#collection-view'),
     collectionContent: document.querySelector('#collection-content'),
     collectionPosition: document.querySelector('#collection-position'),
@@ -25,7 +26,6 @@
 
   const escapeHtml = (value) => String(value).replace(/[&<>'"]/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' })[char]);
   const totalImages = collections.reduce((sum, item) => sum + item.imageCount, 0);
-  document.querySelector('#archive-total').textContent = `${collections.length} collections · ${totalImages} images`;
   document.querySelector('#about-collections').textContent = collections.length;
   document.querySelector('#about-images').textContent = totalImages;
   document.querySelector('#about-date').textContent = new Intl.DateTimeFormat('en', { month: 'long', year: 'numeric' }).format(new Date(data.generatedAt));
@@ -52,18 +52,22 @@
 
   function renderArchive() {
     const items = filteredCollections();
-    elements.grid.innerHTML = items.map(item => `
-      <article class="collection-card" tabindex="0" role="link" data-collection="${item.id}" aria-label="Open ${escapeHtml(item.title)}">
-        <div class="collection-cover"><img src="${item.cover}" alt="" loading="lazy" decoding="async" /></div>
-        <div class="collection-meta">
-          <div class="card-line"><h2>${escapeHtml(item.title)}</h2><span>${escapeHtml(item.year)}</span></div>
-          <p>${escapeHtml(item.type)} · ${item.imageCount} ${item.imageCount === 1 ? 'image' : 'images'}</p>
-        </div>
-      </article>`).join('');
+    elements.grid.innerHTML = items.map(item => {
+      const number = collections.indexOf(item) + 1;
+      return `<article class="collection-row" tabindex="0" role="link" data-collection="${item.id}" data-cover="${item.cover}" aria-label="Open ${escapeHtml(item.title)}">
+        <span class="row-number">${String(number).padStart(3, '0')}</span>
+        <h2>${escapeHtml(item.title)}</h2>
+        <span class="row-year">${escapeHtml(item.year)}</span>
+        <span class="row-type">${escapeHtml(item.type)}</span>
+        <span class="row-count">${item.imageCount}</span>
+      </article>`;
+    }).join('');
     elements.resultCount.textContent = `${items.length} ${items.length === 1 ? 'collection' : 'collections'}`;
     elements.emptyState.hidden = items.length !== 0;
     const hasFilters = state.search || state.type !== 'All' || state.decade !== 'All';
     elements.clearFilters.hidden = !hasFilters;
+    elements.previewImage.src = items[0]?.cover || '';
+    elements.previewImage.hidden = !items.length;
   }
 
   function setRoute(route) {
@@ -175,6 +179,10 @@
   elements.grid.addEventListener('click', event => {
     const card = event.target.closest('[data-collection]');
     if (card) openCollection(card.dataset.collection);
+  });
+  elements.grid.addEventListener('pointerover', event => {
+    const row = event.target.closest('[data-cover]');
+    if (row) elements.previewImage.src = row.dataset.cover;
   });
   elements.grid.addEventListener('keydown', event => {
     const card = event.target.closest('[data-collection]');
