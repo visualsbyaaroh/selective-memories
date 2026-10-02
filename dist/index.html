@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#080808" />
+    <meta name="description" content="A personal archive of film, fashion, editorial, advertising, music, and photographic references." />
+    <title>Inspo Archive</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23080808'/%3E%3Crect x='7' y='7' width='18' height='18' fill='none' stroke='%23f1f1ec' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%23f1f1ec'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="wordmark" href="#archive" aria-label="Inspo Archive home">
+        <span class="mark" aria-hidden="true"></span>
+        <span>Inspo Archive</span>
+      </a>
+      <p class="archive-total" id="archive-total"></p>
+      <nav class="primary-nav" aria-label="Primary navigation">
+        <a href="#archive" data-route="archive">Archive</a>
+        <a href="#index" data-route="index">Index</a>
+        <a href="#about" data-route="about">About</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="view archive-view" id="archive-view" aria-labelledby="archive-heading">
+        <div class="archive-intro">
+          <h1 id="archive-heading">Visual references,<br />kept in context.</h1>
+          <p>A working collection of images from cinema, fashion, print, music and photographic history.</p>
+        </div>
+
+        <div class="archive-tools" aria-label="Archive controls">
+          <label class="search-field">
+            <span class="visually-hidden">Search the archive</span>
+            <svg aria-hidden="true" viewBox="0 0 20 20"><circle cx="8.5" cy="8.5" r="5.5"></circle><path d="m13 13 4 4"></path></svg>
+            <input id="search-input" type="search" placeholder="Search people, titles, publications…" autocomplete="off" />
+          </label>
+          <div class="filter-row">
+            <div class="type-filters" id="type-filters" aria-label="Filter by type"></div>
+            <label class="decade-select">
+              <span class="visually-hidden">Filter by decade</span>
+              <select id="decade-filter">
+                <option value="All">All dates</option>
+              </select>
+            </label>
+          </div>
+          <div class="result-line">
+            <span id="result-count"></span>
+            <button id="clear-filters" type="button">Clear filters</button>
+          </div>
+        </div>
+
+        <div class="collection-grid" id="collection-grid"></div>
+        <div class="empty-state" id="empty-state" hidden>
+          <p>No collections match this search.</p>
+          <button type="button" data-clear>Show the full archive</button>
+        </div>
+      </section>
+
+      <section class="view index-view" id="index-view" aria-labelledby="index-heading" hidden>
+        <div class="page-heading">
+          <p class="eyebrow">Cross-reference</p>
+          <h1 id="index-heading">Index</h1>
+          <p>People, films, publications, brands and subjects across the archive.</p>
+        </div>
+        <div class="index-list" id="index-list"></div>
+      </section>
+
+      <section class="view about-view" id="about-view" aria-labelledby="about-heading" hidden>
+        <div class="page-heading">
+          <p class="eyebrow">About</p>
+          <h1 id="about-heading">An image archive<br />built around collections.</h1>
+        </div>
+        <div class="about-copy">
+          <p>This is a personal working archive: film stills, campaigns, editorials, portraits, events, posters and historical photographs gathered for visual research.</p>
+          <p>Images stay grouped by their original context. Dates, subjects and credits are recorded where known; uncertain details remain marked as such rather than guessed.</p>
+          <dl>
+            <div><dt>Collections</dt><dd id="about-collections"></dd></div>
+            <div><dt>Images</dt><dd id="about-images"></dd></div>
+            <div><dt>Last indexed</dt><dd id="about-date"></dd></div>
+          </dl>
+        </div>
+      </section>
+    </main>
+
+    <section class="collection-view" id="collection-view" aria-live="polite" hidden>
+      <header class="collection-bar">
+        <button class="back-button" id="back-button" type="button">
+          <span aria-hidden="true">←</span> Archive
+        </button>
+        <span id="collection-position"></span>
+      </header>
+      <div id="collection-content"></div>
+    </section>
+
+    <dialog class="lightbox" id="lightbox">
+      <button class="lightbox-close" type="button" aria-label="Close image">×</button>
+      <button class="lightbox-control previous" type="button" aria-label="Previous image">←</button>
+      <figure>
+        <img id="lightbox-image" alt="" />
+        <figcaption id="lightbox-caption"></figcaption>
+      </figure>
+      <button class="lightbox-control next" type="button" aria-label="Next image">→</button>
+    </dialog>
+
+    <script src="archive-data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
