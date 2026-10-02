@@ -7,7 +7,7 @@
     views: { archive: document.querySelector('#archive-view'), index: document.querySelector('#index-view'), about: document.querySelector('#about-view') },
     nav: [...document.querySelectorAll('[data-route]')],
     grid: document.querySelector('#collection-grid'),
-    typeFilters: document.querySelector('#type-filters'),
+    typeFilter: document.querySelector('#type-filter'),
     decadeFilter: document.querySelector('#decade-filter'),
     search: document.querySelector('#search-input'),
     resultCount: document.querySelector('#result-count'),
@@ -31,7 +31,7 @@
   document.querySelector('#about-date').textContent = new Intl.DateTimeFormat('en', { month: 'long', year: 'numeric' }).format(new Date(data.generatedAt));
 
   const types = ['All', ...new Set(collections.map(item => item.type))];
-  elements.typeFilters.innerHTML = types.map(type => `<button class="filter-chip${type === 'All' ? ' is-active' : ''}" type="button" data-type="${escapeHtml(type)}">${escapeHtml(type)}</button>`).join('');
+  elements.typeFilter.innerHTML = types.map(type => `<option value="${escapeHtml(type)}">${type === 'All' ? 'All types' : escapeHtml(type)}</option>`).join('');
 
   const decades = [...new Set(collections.map(item => item.decade))].filter(item => !['Unknown', 'Multiple'].includes(item)).sort();
   elements.decadeFilter.insertAdjacentHTML('beforeend', decades.map(decade => `<option value="${escapeHtml(decade)}">${escapeHtml(decade)}</option>`).join('') + '<option value="Unknown">Date unknown</option><option value="Multiple">Multiple periods</option>');
@@ -162,18 +162,12 @@
     state.decade = 'All';
     elements.search.value = '';
     elements.decadeFilter.value = 'All';
-    document.querySelectorAll('[data-type]').forEach(button => button.classList.toggle('is-active', button.dataset.type === 'All'));
+    elements.typeFilter.value = 'All';
     renderArchive();
   }
 
   elements.search.addEventListener('input', event => { state.search = event.target.value; renderArchive(); });
-  elements.typeFilters.addEventListener('click', event => {
-    const button = event.target.closest('[data-type]');
-    if (!button) return;
-    state.type = button.dataset.type;
-    document.querySelectorAll('[data-type]').forEach(item => item.classList.toggle('is-active', item === button));
-    renderArchive();
-  });
+  elements.typeFilter.addEventListener('change', event => { state.type = event.target.value; renderArchive(); });
   elements.decadeFilter.addEventListener('change', event => { state.decade = event.target.value; renderArchive(); });
   elements.clearFilters.addEventListener('click', clearFilters);
   document.querySelector('[data-clear]').addEventListener('click', clearFilters);
