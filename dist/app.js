@@ -33,8 +33,8 @@
   const types = ['All', ...new Set(collections.map(item => item.type))];
   elements.typeFilter.innerHTML = types.map(type => `<option value="${escapeHtml(type)}">${type === 'All' ? 'All types' : escapeHtml(type)}</option>`).join('');
 
-  const decades = [...new Set(collections.map(item => item.decade))].filter(item => !['Unknown', 'Multiple'].includes(item)).sort();
-  elements.decadeFilter.insertAdjacentHTML('beforeend', decades.map(decade => `<option value="${escapeHtml(decade)}">${escapeHtml(decade)}</option>`).join('') + '<option value="Unknown">Date unknown</option><option value="Multiple">Multiple periods</option>');
+  const decades = [...new Set(collections.map(item => item.decade))].filter(item => !['—', 'Multiple'].includes(item)).sort();
+  elements.decadeFilter.insertAdjacentHTML('beforeend', decades.map(decade => `<option value="${escapeHtml(decade)}">${escapeHtml(decade)}</option>`).join('') + '<option value="—">—</option><option value="Multiple">Multiple periods</option>');
 
   function searchableText(item) {
     return [item.title, item.subtitle, item.type, item.year, ...item.people, ...item.subjects].join(' ').toLowerCase();
