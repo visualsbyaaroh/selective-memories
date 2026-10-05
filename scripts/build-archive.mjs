@@ -73,6 +73,7 @@ for (let collectionIndex = 0; collectionIndex < metadata.length; collectionIndex
     decade: item.decade,
     people: item.people,
     subjects: item.subjects,
+    downloads: item.downloads || [],
     status: item.status || 'Catalogued',
     imageCount: images.length,
     sections: sectionNames,

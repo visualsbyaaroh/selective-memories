@@ -109,6 +109,10 @@
         return `<figure class="image-item"><button class="image-button" type="button" data-image-index="${globalIndex}" aria-label="View image ${globalIndex + 1} of ${item.imageCount}"><img src="${image.src}" alt="${escapeHtml(image.alt)}" loading="lazy" decoding="async" /></button>${caption}</figure>`;
       }).join('')}</div></section>`;
     }).join('');
+    const downloads = item.downloads?.length ? `<section class="download-section">
+      <div class="gallery-heading"><h2>Full issues</h2><span>${item.downloads.length} files</span></div>
+      <div class="download-list">${item.downloads.map(download => `<a class="download-row" href="${escapeHtml(download.url)}" download><span>${escapeHtml(download.label)}</span><span>${escapeHtml(download.size)}</span><span>Download</span></a>`).join('')}</div>
+    </section>` : '';
     elements.collectionContent.innerHTML = `
       <div class="collection-hero">
         <h1>${escapeHtml(item.title)}</h1>
@@ -123,7 +127,7 @@
             ${item.status !== 'Catalogued' ? `<div><dt>Status</dt><dd>${escapeHtml(item.status)}</dd></div>` : ''}
           </dl>
         </div>
-      </div>${sections}`;
+      </div>${downloads}${sections}`;
     const position = collections.indexOf(item) + 1;
     elements.collectionPosition.textContent = `${String(position).padStart(2, '0')} / ${String(collections.length).padStart(2, '0')}`;
     elements.collectionView.hidden = false;

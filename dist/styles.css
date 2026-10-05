@@ -138,6 +138,12 @@ img { display: block; max-width: 100%; }
 .collection-details dt { color: var(--muted); text-transform: uppercase; }
 .collection-details dd { margin: 0; }
 .gallery-section { padding: 24px 24px 60px; border-bottom: 1px solid var(--line); }
+.download-section { padding: 24px; border-bottom: 1px solid var(--line); }
+.download-list { border-top: 1px solid var(--line); }
+.download-row { display: grid; grid-template-columns: minmax(0, 1fr) 90px 70px; gap: 16px; padding: 11px 0; border-bottom: 1px solid var(--line); color: var(--fg); font-size: 11px; text-decoration: none; }
+.download-row span:nth-child(2), .download-row span:last-child { color: var(--muted); text-align: right; }
+.download-row:hover span:first-child { padding-left: 8px; }
+.download-row span:first-child { transition: padding-left .15s ease; }
 .gallery-heading { display: flex; justify-content: space-between; margin-bottom: 16px; text-transform: uppercase; font-size: 11px; }
 .gallery-heading h2 { margin: 0; font-size: inherit; font-weight: 400; }
 .gallery-heading span { color: var(--muted); }
@@ -169,7 +175,7 @@ img { display: block; max-width: 100%; }
 
 @media (max-width: 560px) {
   :root { --header: 54px; }
-  .site-header, .view, .collection-bar, .collection-hero, .gallery-section { padding-left: 14px; padding-right: 14px; }
+  .site-header, .view, .collection-bar, .collection-hero, .gallery-section, .download-section { padding-left: 14px; padding-right: 14px; }
   .site-header { font-size: 10px; }
   .primary-nav { gap: 12px; }
   .archive-tools { min-height: 150px; }
