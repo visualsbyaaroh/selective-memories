@@ -15,6 +15,34 @@
     "pulse": {
       "label": "P.U.L.S.E World Edition",
       "url": "https://world.pulse.rs/making-of-stalker/?amp=1"
+    },
+    "waxwork": {
+      "label": "Waxwork Records",
+      "url": "https://waxworkrecords.com/collections/all/products/your-mother"
+    },
+    "alexross-goddess": {
+      "label": "Alex Ross Art",
+      "url": "https://www.alexrossart.com/products/wonder-woman-goddess-of-truth"
+    },
+    "alexross-origins": {
+      "label": "Alex Ross Art",
+      "url": "https://www.alexrossart.com/products/origins-wonder-woman-matted-lithograph"
+    },
+    "alexross-tribute": {
+      "label": "Alex Ross Art",
+      "url": "https://www.alexrossart.com/products/wonder-woman-tribute"
+    },
+    "alexross-mythology": {
+      "label": "Alex Ross Art",
+      "url": "https://www.alexrossart.com/products/wonder-woman-mythology-matted-lithograph"
+    },
+    "alexross-gods": {
+      "label": "Alex Ross Art",
+      "url": "https://www.alexrossart.com/products/copy-of-gods-wonder-woman"
+    },
+    "alexross-spirit": {
+      "label": "Alex Ross Art",
+      "url": "https://www.alexrossart.com/products/wonder-woman-spirit-of-truth-treasury"
     }
   },
   "captions": {
@@ -198,6 +226,25 @@
     "P2, UK Gaming Magazine/Covers/49.avif": {"text":"Issue 49, August 2004"},
     "P2, UK Gaming Magazine/Covers/52.avif": {"text":"Issue 52, November 2004"},
     "P2, UK Gaming Magazine/Covers/54.jpg": {"text":"Issue 54, Christmas 2004"},
-    "P2, UK Gaming Magazine/Covers/63.avif": {"text":"Issue 63, July 2005"}
+    "P2, UK Gaming Magazine/Covers/63.avif": {"text":"Issue 63, July 2005"},
+
+    "Mahershala Ali in Your Mother Your Mother Your Mother/Posters/01KZ4489FBHAV5JGF5RED8QWCQ.jpg": {"text":"Poster for Your Mother Your Mother Your Mother, written and directed by Bassam Tariq and starring Mahershala Ali, 2026."},
+    "Mahershala Ali in Your Mother Your Mother Your Mother/Posters/SaveInta.com_813966439_18628531891042209_1590281703706852828_n.jpg": {"text":"Alternate poster for Your Mother Your Mother Your Mother, 2026."},
+    "Mahershala Ali in Your Mother Your Mother Your Mother/Posters/yourmotheryourmotheryourmother_1.jpg": {"text":"Release poster for Your Mother Your Mother Your Mother, 2026."},
+    "Mahershala Ali in Your Mother Your Mother Your Mother/Posters/yourmotheryourmotheryourmother_2.jpg": {"text":"Release poster for Your Mother Your Mother Your Mother, announcing select theaters on 25 September and wider release on 9 October 2026."},
+    "Mahershala Ali in Your Mother Your Mother Your Mother/Soundtrack/SaveInta.com_799819105_18633748786055510_2975140991938044679_n.jpg": {"text":"Promotional artwork for Son Lux’s original motion picture soundtrack.","source":"waxwork"},
+    "Mahershala Ali in Your Mother Your Mother Your Mother/Soundtrack/YMYMYM_Cover_Back_1800x1800.webp": {"text":"Back cover of Son Lux’s original motion picture soundtrack release, 2026.","source":"waxwork"},
+    "Mahershala Ali in Your Mother Your Mother Your Mother/Soundtrack/YMYMYM_Cover-Front_1800x1800.jpg": {"text":"Front cover of Son Lux’s original motion picture soundtrack release, 2026.","source":"waxwork"},
+    "Mahershala Ali in Your Mother Your Mother Your Mother/Soundtrack/YMYMYM_Packshot-1_1800x1800.webp": {"text":"Vinyl package for the Son Lux soundtrack, issued by Waxwork Records with Blood Red and Milk White swirled vinyl and red splatter.","source":"waxwork"},
+    "Mahershala Ali in Your Mother Your Mother Your Mother/Soundtrack/YMYMYM_Packshot-2_1800x1800.webp": {"text":"Gatefold vinyl package for the Son Lux soundtrack, showing the sleeve, record and printed inner material.","source":"waxwork"},
+    "Mahershala Ali in Your Mother Your Mother Your Mother/Soundtrack/YMYMYM-Vinyl_1800x1800.webp": {"text":"Blood Red and Milk White swirled vinyl with red splatter for the Son Lux soundtrack.","source":"waxwork"},
+
+    "Various Wonder Woman Paintings by Alex Ross/1062399.jpg": {"text":"Alex Ross. Cover art for Wonder Woman: The Greatest Stories Ever Told."},
+    "Various Wonder Woman Paintings by Alex Ross/goddess-of-truth.webp": {"text":"Alex Ross. Wonder Woman: Goddess of Truth.","source":"alexross-goddess"},
+    "Various Wonder Woman Paintings by Alex Ross/wonder_woman_hero.jpg": {"text":"Alex Ross. Origins: Wonder Woman, originally created for JLA: Secret Origins.","source":"alexross-origins"},
+    "Various Wonder Woman Paintings by Alex Ross/WonderWomanTribute.webp": {"text":"Alex Ross. Wonder Woman Tribute, a reinterpretation of the original 1942 cover of Wonder Woman Vol. 1.","source":"alexross-tribute"},
+    "Various Wonder Woman Paintings by Alex Ross/WonderWomen_Litho.jpg": {"text":"Alex Ross. Mythology: Wonder Woman, originally created for Mythology: The DC Comics Art of Alex Ross.","source":"alexross-mythology"},
+    "Various Wonder Woman Paintings by Alex Ross/ww-gods_a0b4935b-fa4d-47a0-bf0f-573b1cb3f8f5.webp": {"text":"Alex Ross. Gods: Wonder Woman, first released as a signed canvas for San Diego Comic-Con 2022.","source":"alexross-gods"},
+    "Various Wonder Woman Paintings by Alex Ross/WWtruth_9ecb6509-c4ff-448d-925f-616d83c8192f.webp": {"text":"Alex Ross. Cover art for Wonder Woman: Spirit of Truth, written by Paul Dini and published by DC Comics in 2002.","source":"alexross-spirit"}
   }
 }
