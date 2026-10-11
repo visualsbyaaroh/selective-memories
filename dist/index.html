@@ -22,9 +22,20 @@
     <main>
       <section class="view archive-view" id="archive-view" aria-labelledby="archive-heading">
         <h1 class="visually-hidden" id="archive-heading">Archive</h1>
+        <div class="archive-stage" id="archive-stage" aria-label="Visual collection archive. Drag to explore.">
+          <div class="archive-plane" id="archive-plane"></div>
+        </div>
+        <div class="archive-status" aria-hidden="true">
+          <span id="archive-count"></span>
+          <span>Drag to explore · Select an image to open</span>
+        </div>
+      </section>
+
+      <section class="view index-view" id="index-view" aria-labelledby="index-heading" hidden>
+        <h1 class="visually-hidden" id="index-heading">Index</h1>
         <div class="archive-tools" aria-label="Archive controls">
           <div class="archive-tools-heading">
-            <span>Archive</span>
+            <span>Index</span>
             <span id="result-count"></span>
           </div>
           <div class="filter-row">
@@ -49,17 +60,16 @@
         <div class="archive-layout">
           <div class="collection-list" id="collection-grid"></div>
           <aside class="collection-preview" aria-hidden="true">
-            <img id="collection-preview-image" alt="" />
+            <div class="preview-frame" id="preview-frame">
+              <img id="collection-preview-image" alt="" />
+              <div class="sensitive-gate preview-gate" id="preview-gate" hidden>
+                <button type="button" data-reveal-preview>Reveal</button>
+                <span>Caution, NSFW material</span>
+              </div>
+            </div>
           </aside>
         </div>
         <div class="empty-state" id="empty-state" hidden><p>No collections found.</p><button type="button" data-clear>Reset</button></div>
-      </section>
-
-      <section class="view index-view" id="index-view" aria-labelledby="index-heading" hidden>
-        <div class="page-heading">
-          <h1 id="index-heading">Index</h1>
-        </div>
-        <div class="index-list" id="index-list"></div>
       </section>
 
       <section class="view about-view" id="about-view" aria-labelledby="about-heading" hidden>

@@ -84,6 +84,7 @@ for (let collectionIndex = 0; collectionIndex < metadata.length; collectionIndex
     decade: item.decade,
     people: item.people,
     subjects: item.subjects,
+    sensitive: /caution.*nsfw/i.test(item.sourceFolder),
     downloads,
     status: item.status || 'Catalogued',
     imageCount: images.length,
