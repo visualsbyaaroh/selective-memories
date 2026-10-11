@@ -46,6 +46,17 @@ for (let collectionIndex = 0; collectionIndex < metadata.length; collectionIndex
     return parts.length > 1 ? parts[0] : 'Images';
   }))];
   const images = [];
+  const downloads = [];
+
+  for (const download of item.downloads || []) {
+    if (download.sourceFile) {
+      const downloadSource = path.join(sourcePath, download.sourceFile);
+      const downloadOutput = path.join(distRoot, download.url);
+      await fs.mkdir(path.dirname(downloadOutput), { recursive: true });
+      await fs.copyFile(downloadSource, downloadOutput);
+    }
+    downloads.push({ label: download.label, size: download.size, url: download.url });
+  }
 
   for (let imageIndex = 0; imageIndex < files.length; imageIndex += 1) {
     const file = files[imageIndex];
@@ -73,7 +84,7 @@ for (let collectionIndex = 0; collectionIndex < metadata.length; collectionIndex
     decade: item.decade,
     people: item.people,
     subjects: item.subjects,
-    downloads: item.downloads || [],
+    downloads,
     status: item.status || 'Catalogued',
     imageCount: images.length,
     sections: sectionNames,
