@@ -99,6 +99,12 @@
         ${isSensitive(item) ? '<div class="sensitive-gate"><button type="button" data-reveal-tile>Reveal</button><span>Caution, NSFW material</span></div>' : ''}</div>
         <h2>${escapeHtml(displayTitle(item))}</h2></article>`;
     }).join('');
+    elements.plane.querySelectorAll('.archive-tile-open').forEach(button => {
+      button.addEventListener('click', event => {
+        event.stopPropagation();
+        openCollection(button.closest('[data-collection]').dataset.collection);
+      });
+    });
     updateCanvas();
   }
 
@@ -205,23 +211,23 @@
 
   elements.stage.addEventListener('pointerdown', event => {
     if (event.target.closest('[data-reveal-tile]')) return;
-    state.canvas.dragging = true; state.canvas.moved = false; state.canvas.pointerX = event.clientX; state.canvas.pointerY = event.clientY;
-    elements.stage.setPointerCapture(event.pointerId);
+    state.canvas.dragging = true; state.canvas.moved = false;
+    state.canvas.pointerX = event.clientX; state.canvas.pointerY = event.clientY;
   });
   elements.stage.addEventListener('pointermove', event => {
     if (!state.canvas.dragging) return;
     const dx = event.clientX - state.canvas.pointerX; const dy = event.clientY - state.canvas.pointerY;
-    if (Math.abs(dx) + Math.abs(dy) > 3) state.canvas.moved = true;
+    if (!state.canvas.moved && Math.abs(dx) + Math.abs(dy) > 6) {
+      state.canvas.moved = true;
+      elements.stage.setPointerCapture(event.pointerId);
+    }
     state.canvas.x += dx; state.canvas.y += dy; state.canvas.pointerX = event.clientX; state.canvas.pointerY = event.clientY; updateCanvas();
   });
-  const endDrag = () => { state.canvas.dragging = false; };
-  elements.stage.addEventListener('pointerup', endDrag);
-  elements.stage.addEventListener('pointercancel', endDrag);
+  elements.stage.addEventListener('pointerup', () => { state.canvas.dragging = false; });
+  elements.stage.addEventListener('pointercancel', () => { state.canvas.dragging = false; });
   elements.plane.addEventListener('click', event => {
     const reveal = event.target.closest('[data-reveal-tile]');
     if (reveal) { reveal.closest('.archive-tile').classList.add('is-revealed'); return; }
-    const tile = event.target.closest('[data-collection]');
-    if (tile && !state.canvas.moved) openCollection(tile.dataset.collection);
   });
   window.addEventListener('resize', renderCanvas);
 
